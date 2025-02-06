@@ -23,7 +23,7 @@ enum SortBy {
   length = 'length',
 }
 
-function sortArr(
+function sortArray(
   arr: Goods,
   { sortBy, isReversed }: { sortBy: string; isReversed: boolean },
 ): Goods {
@@ -55,7 +55,7 @@ export const App = () => {
   const [sortBy, setSortBy] = useState('');
   const [isReversed, setIsReversed] = useState(false);
 
-  const visibleGoods = sortArr(goodsFromServer, {
+  const visibleGoods = sortArray(goodsFromServer, {
     sortBy,
     isReversed,
   });
