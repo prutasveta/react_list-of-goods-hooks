@@ -58,12 +58,6 @@ export const App = () => {
     isReversed,
   });
 
-  let showReset = false;
-
-  if (sortBy !== '' || (sortBy == '' && isReversed)) {
-    showReset = true;
-  }
-
   return (
     <div className="section content">
       <div className="buttons">
@@ -97,7 +91,7 @@ export const App = () => {
           Reverse
         </button>
 
-        {showReset && (
+        {(sortBy !== '' || isReversed) && (
           <button
             type="button"
             className="button is-danger is-light"
