@@ -18,8 +18,10 @@ export const goodsFromServer = [
 
 type Goods = string[];
 
-const SORT_BY_ALPHABETICALLY = 'alphabetically';
-const SORT_BY_LENGTH = 'length';
+enum SortBy {
+  alphabetically = 'alphabetically',
+  length = 'length',
+}
 
 function sortArr(
   arr: Goods,
@@ -30,10 +32,10 @@ function sortArr(
   if (sortBy) {
     result.sort((item1, item2) => {
       switch (sortBy) {
-        case SORT_BY_ALPHABETICALLY:
+        case SortBy.alphabetically:
           return item1.localeCompare(item2);
 
-        case SORT_BY_LENGTH:
+        case SortBy.length:
           return item1.length - item2.length;
 
         default:
@@ -64,18 +66,18 @@ export const App = () => {
         <button
           type="button"
           className={cn('button is-info', {
-            'is-light': sortBy !== SORT_BY_ALPHABETICALLY,
+            'is-light': sortBy !== SortBy.alphabetically,
           })}
-          onClick={() => setSortBy(SORT_BY_ALPHABETICALLY)}
+          onClick={() => setSortBy(SortBy.alphabetically)}
         >
           Sort alphabetically
         </button>
 
         <button
           type="button"
-          onClick={() => setSortBy(SORT_BY_LENGTH)}
+          onClick={() => setSortBy(SortBy.length)}
           className={cn('button is-success', {
-            'is-light': sortBy !== SORT_BY_LENGTH,
+            'is-light': sortBy !== SortBy.length,
           })}
         >
           Sort by length
